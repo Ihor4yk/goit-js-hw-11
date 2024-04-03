@@ -1,4 +1,4 @@
-export function getImage(query) {
+export function getImages(query) {
   const BASE_URL = "https://pixabay.com";
   const END_POINT = "/api/";
   const params = new URLSearchParams({
@@ -6,9 +6,9 @@ export function getImage(query) {
     q: query,
     image_type: "photo",
     orientation: "horizontal",
-    safesearch: true,
+    safesearch: "true",
   })
-  const url = `${BASE_URL}${END_POINT}?${params}`
+  const url = `${BASE_URL}${END_POINT}?${params}`;
 
   return fetch(url).then(response => {
     if (!response.ok) {
