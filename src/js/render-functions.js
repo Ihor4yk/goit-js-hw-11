@@ -1,13 +1,5 @@
-import SimpleLightbox from "simplelightbox"
-import "simplelightbox/dist/simple-lightbox.min.css";
-
-const gallery = document.querySelector(".gallery");
-const lightbox = new SimpleLightbox('.gallery a', {
-  captionsData: 'alt',
-});
-
 export function queryTemplate(data) {
-  const markup = data.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
+  return data.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) => {
     return `<li class="photos-list-item">
       <a class="photos-list-link" href="${largeImageURL}">
         <img class="photo" src="${webformatURL}" alt="${tags}"/>
@@ -28,8 +20,4 @@ export function queryTemplate(data) {
       </ul>
     </li>`
   }).join("");
-  gallery.insertAdjacentHTML('beforeend', markup);
-  lightbox.refresh();
 }
-  
-      

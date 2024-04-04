@@ -9,11 +9,10 @@ export function getImages(query) {
     safesearch: "true",
   })
   const url = `${BASE_URL}${END_POINT}?${params}`;
-
-  return fetch(url).then(response => {
-    if (!response.ok) {
-      throw new Error(response.status);
-    }
-    return response.json();
-  })
+  return fetch(url)
+    .then(res => res.json())
+    .catch(error => {
+      console.error('Error occurred while fetching images:', error);
+      throw error;
+    });
 }
